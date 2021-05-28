@@ -1,9 +1,15 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import ActiveCampaignPage from "./Components/ActiveCampaignPage/ActiveCampaignPage";
 import LandingPage from "./Components/LandingPage/LandingPage";
 
 function App() {
   return (
-    <div>DO Routing here</div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/campaign/:id" exact component={ActiveCampaignPage} />
+        <Route path="/" exact component={LandingPage} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 

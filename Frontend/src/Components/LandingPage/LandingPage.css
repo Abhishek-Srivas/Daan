@@ -189,17 +189,27 @@
   margin: 6rem 0 0 6.5vw;
 }
 
-.c-item {
-  max-width: 25vw !important;
-  margin-right: 40px;
+.rec.rec-arrow:disabled {
+  visibility: hidden;
+}
+.rec.rec-arrow.rec-arrow-right {
+  position: absolute !important;
+  right: 2rem !important;
 }
 
-.react-multi-carousel-track {
-  padding: 2rem 6.5vw !important;
+.rec.rec-arrow.rec-arrow-left {
+  position: absolute !important;
+  left: 2rem !important;
+  z-index: 40;
 }
 
-@media (max-width: 425px) {
-  .react-multiple-carousel__arrow {
-    display: none;
-  }
+.cGKbZh,
+.cGKbZh:hover:enabled,
+.cGKbZh:focus:enabled {
+  background-color: #ff5224 !important;
+  color: #fff !important;
+}
+
+.kFlRbN {
+  margin: 0% 6.5vw;
 }

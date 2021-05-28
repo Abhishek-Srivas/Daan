@@ -16,6 +16,10 @@ p {
   margin: 0%;
 }
 
+.hyperModalWrapper___2sZCR.visible___uofxI {
+  z-index: 50 !important;
+}
+
 @media (max-width: 786px) {
   html {
     font-size: 65%;

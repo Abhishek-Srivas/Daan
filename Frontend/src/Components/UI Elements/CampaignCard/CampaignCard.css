@@ -3,6 +3,57 @@
   box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.1);
   border-radius: 1.5rem;
   padding: 1.5rem;
-  height: 25rem;
+  min-height: 25rem;
+  max-width: 22rem;
   border: 1px solid rgba(204, 204, 204, 0.3);
+}
+
+.cc-h1 {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 27px;
+  letter-spacing: 0.03em;
+
+  color: #000000;
+  padding: 1rem 0;
+}
+
+.cc-h2 {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+
+  /* Shade / 01 */
+
+  color: #8c8c8c;
+}
+
+.progressbar {
+  margin: 1.5rem 0;
+}
+
+.cc-progress {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.cc-progress p {
+  padding: 0 1rem;
+  text-align: center;
+}
+.cc-rule {
+  padding-right: 2rem !important;
+  border-right: 1px solid #bfbfbf;
+}
+
+.footer {
+  height: 139px;
+
+  background: #191e27;
 }

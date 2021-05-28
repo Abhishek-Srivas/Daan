@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import Logo from "../../../assets/logo.svg";
 import { ButtonFill, ButtonOutline } from "../Buttons/Buttons";
+import LoginModal from "../../Auth/LoginModal";
+import SignupModal from "../../Auth/SignupModal";
 
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openSignup, setOpenSignup] = useState(false);
 
   const handleScroll = (event) => {
     if (window.scrollY < 50 && scrolling === true) {
@@ -25,56 +29,59 @@ const Navbar = () => {
   });
 
   return (
-    <nav
-      className="nav"
-      style={{
-        background: scrolling ? "#ffffff" : "none",
-        boxShadow: scrolling ? "inset 0px -1px 0px rgba(0, 0, 0, 0.1)" : "none",
-      }}
-    >
-      <div>
-        <Link to="/" className="logo">
-          <img src={Logo} alt="logo" />
-          <span>Daan</span>
-        </Link>
-      </div>
-      <div className="navlinks">
-        <Link
-          to="#about"
-          className={scrolling ? "navlink-solid" : "navlink-outline"}
-        >
-          About
-        </Link>
-        <Link
-          to="#contact"
-          className={scrolling ? "navlink-solid" : "navlink-outline"}
-        >
-          Contact
-        </Link>
-        <Link to="/">
+    <React.Fragment>
+      <nav
+        className="nav"
+        style={{
+          background: scrolling ? "#ffffff" : "none",
+          boxShadow: scrolling
+            ? "inset 0px -1px 0px rgba(0, 0, 0, 0.1)"
+            : "none",
+        }}
+      >
+        <div>
+          <Link to="/" className="logo">
+            <img src={Logo} alt="logo" />
+            <span>Daan</span>
+          </Link>
+        </div>
+        <div className="navlinks">
+          <Link
+            to="#about"
+            className={scrolling ? "navlink-solid" : "navlink-outline"}
+          >
+            About
+          </Link>
+          <Link
+            to="#contact"
+            className={scrolling ? "navlink-solid" : "navlink-outline"}
+          >
+            Contact
+          </Link>
           <ButtonFill
-            change="true"
             borderWidth="1px"
             fontSize="1rem"
             width="auto"
             padding="0.5rem 1.5rem"
+            onClick={() => setOpenSignup(true)}
           >
             Signup
           </ButtonFill>
-        </Link>
-        <Link to="/">
+
           <ButtonOutline
-            change="true"
             borderWidth="1px"
             fontSize="1rem"
             width="auto"
             padding="0.5rem 1.5rem"
+            onClick={() => setOpenLogin(true)}
           >
             Login
           </ButtonOutline>
-        </Link>
-      </div>
-    </nav>
+        </div>
+      </nav>
+      <LoginModal show={openLogin} onHide={() => setOpenLogin(false)} />
+      <SignupModal show={openSignup} onHide={() => setOpenSignup(false)} />
+    </React.Fragment>
   );
 };
 

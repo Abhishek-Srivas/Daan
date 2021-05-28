@@ -38,7 +38,8 @@
 .navlinks {
   margin-right: 6.5vw;
 }
-.navlinks a {
+.navlinks a,
+.navlinks button {
   text-decoration: none;
   margin-left: 1.5rem;
 }
