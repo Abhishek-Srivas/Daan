@@ -1,0 +1,205 @@
+.LandingPage {
+  margin: 0%;
+  padding: 0%;
+  width: 100vw !important;
+  overflow-x: hidden;
+  color: #02030d;
+}
+
+/* section 1 */
+
+.section1 {
+  min-height: 75vh;
+  background: url(../../assets/LandingPage/img1.png) no-repeat;
+  background-size: cover;
+}
+
+.LP-heading {
+  padding-top: 8rem;
+  color: #fff;
+  margin-left: 6.5vw;
+}
+
+.LP-h1 {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 3.25rem;
+  line-height: 4.4rem;
+  width: 38rem;
+}
+
+.LP-h2 {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: 0.02em;
+  color: #bfbfbf;
+  width: 33.5rem;
+}
+
+.LP-btn-container {
+  margin-top: 1rem;
+  width: 23rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* section 2 */
+
+.section2 {
+  background: #edfbff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 4rem 6.5vw;
+  font-family: Open Sans;
+  font-style: normal;
+}
+
+.category-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.s2-heading {
+  width: 34vw;
+
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.s2-heading p {
+  width: 90%;
+}
+
+.s2-heading img {
+  width: 5.5rem;
+  height: auto;
+  margin-top: 2rem;
+}
+
+.s2-category {
+  padding: 0% 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.s2-category :nth-child(1) {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.s2-category :nth-child(2) {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+  margin-top: 0.5rem;
+}
+
+/* section 3 */
+.section3 {
+  padding: 7.5rem 6.5vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section3 img {
+  width: 31.5rem;
+  height: auto;
+}
+
+.s3-content {
+  width: 37.75rem;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  letter-spacing: 0.03em;
+  margin: 1rem 0 1.8rem 0;
+}
+
+.LP-h3 {
+  font-weight: bold;
+  font-size: 2.8rem;
+  line-height: 3.8rem;
+  letter-spacing: 0.03em;
+}
+
+/* section 4 */
+
+.section4 {
+  background: #fff6f4;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding: 4rem 6.5vw;
+  height: 25rem;
+}
+
+.s4-card1 {
+  position: absolute;
+  width: 13.6rem;
+  height: 13.4rem;
+  right: 29.4rem;
+  top: 2.6rem;
+  background: #ffffff;
+  box-shadow: 0px 4px 16px #ffdecc;
+  border-radius: 1.8rem;
+}
+
+.s4-card2 {
+  position: absolute;
+  width: 12.6rem;
+  height: 12.6rem;
+  right: 9.6rem;
+  top: 4.2rem;
+  background: #ffffff;
+  box-shadow: 0px 4px 16px #ffdecc;
+  border-radius: 1.8rem;
+}
+
+.s4-card3 {
+  position: absolute;
+  width: 11.2rem;
+  height: 11rem;
+  right: 20.15rem;
+  bottom: 3.4rem;
+  background: #ffffff;
+  box-shadow: 0px 4px 16px #ffdecc;
+  border-radius: 29px;
+}
+/* section5 */
+
+.LP-h4 {
+  font-weight: bold;
+  font-size: 2.8rem;
+  line-height: 3.8rem;
+  letter-spacing: 0.03em;
+  margin: 6rem 0 0 6.5vw;
+}
+
+.c-item {
+  max-width: 25vw !important;
+  margin-right: 40px;
+}
+
+.react-multi-carousel-track {
+  padding: 2rem 6.5vw !important;
+}
+
+@media (max-width: 425px) {
+  .react-multiple-carousel__arrow {
+    display: none;
+  }
+}
