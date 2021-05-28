@@ -1,0 +1,63 @@
+.nav {
+  width: 100vw;
+  height: 4rem;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  z-index: 100;
+  transition: all 0.5s ease-in-out;
+  /* padding: 0% 6.5vw; */
+  font-family: Ropa Sans;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.logo {
+  margin-left: 6.5vw;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.8rem;
+  /* identical to box height */
+  letter-spacing: 0.04em;
+  color: #ff5224;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  margin-right: 0.5rem;
+  width: 2.7rem;
+  height: auto;
+}
+
+.navlinks {
+  margin-right: 6.5vw;
+}
+.navlinks a {
+  text-decoration: none;
+  margin-left: 1.5rem;
+}
+
+.navlink-solid {
+  color: #ff5224;
+  margin-right: 1rem;
+  font-size: 20px;
+  line-height: 21px;
+}
+
+.navlink-outline {
+  color: #fff;
+  margin-right: 1rem;
+  font-size: 20px;
+  line-height: 21px;
+}
+
+.App {
+  height: 120vh;
+  background-color: black;
+}

@@ -1,0 +1,88 @@
+.button-fill {
+  padding: 0.7rem 1.5rem;
+  border: 2px solid #ff5224;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: Ropa Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.4rem;
+  line-height: 1.2rem;
+  letter-spacing: 0.03em;
+  transition: all 0.4s ease-in-out;
+  color: #fff;
+  background: #ff5224;
+  cursor: pointer;
+}
+
+.button-outline {
+  background: #fff;
+  border: 2px solid #ff5224;
+  border-radius: 4px;
+  color: #ff5224;
+  padding: 0.7rem 1.5rem;
+  transition: all 0.4s ease-in-out;
+  font-family: Ropa Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.4rem;
+  line-height: 1.2rem;
+  letter-spacing: 0.03em;
+}
+
+.button-outline:hover,
+.button-fill:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+
+.button-outline:active,
+.button-fill:active {
+  outline: none;
+}
+
+.ripple,
+.ripple-outline {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple:before {
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+}
+
+.ripple:focus:before,
+.ripple-outline:focus:before {
+  transition: all 0.5s ease-out;
+  opacity: 0;
+  width: 160px;
+  height: 160px;
+  margin-top: -80px;
+  margin-left: -80px;
+}
+
+.ripple-outline:before {
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.37);
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+}
+@media (max-width: 425px) {
+  .button-outline,
+  .button-fill,
+  .button-solid {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+}
