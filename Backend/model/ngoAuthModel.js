@@ -16,11 +16,14 @@ const authSchema = new mongoose.Schema({
     email : {
         type : String
     },
-    isVerified : {
-        type : Boolean,
-        default : false
-    },
+    // isVerified : {
+    //     type : Boolean,
+    //     default : false
+    // },
     password : {
+        type : String
+    },
+    token : {
         type : String
     }
 });

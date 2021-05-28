@@ -4,13 +4,18 @@ const router = express.Router();
 
 //importing controllers 
 const authController = require("../controller/authController");
-
+const authMiddleware = require("../middleware/isAuth");
 router
   .route("/signup")
-  .post(authController.signup);
+  .post(authController.signup)
 
 router
   .route("/otp-verify")
-  .post(authController.otpVerification);
+  .post(authController.otpVerification)
+
+router
+  .route("/login")
+  .post(authController.login)
+  .get(authMiddleware.validateNgo,authController.isAuthCheck);
 
 module.exports = router;
