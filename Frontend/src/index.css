@@ -5,6 +5,8 @@ body {
   padding: 0px !important;
   overflow-x: hidden;
   font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   user-select: none;
@@ -17,7 +19,7 @@ p {
 }
 
 .hyperModalWrapper___2sZCR.visible___uofxI {
-  z-index: 50 !important;
+  z-index: 150 !important;
 }
 
 @media (max-width: 786px) {

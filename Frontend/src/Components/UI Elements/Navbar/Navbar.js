@@ -58,16 +58,6 @@ const Navbar = () => {
           >
             Contact
           </Link>
-          <ButtonFill
-            borderWidth="1px"
-            fontSize="1rem"
-            width="auto"
-            padding="0.5rem 1.5rem"
-            onClick={() => setOpenSignup(true)}
-          >
-            Signup
-          </ButtonFill>
-
           <ButtonOutline
             borderWidth="1px"
             fontSize="1rem"
@@ -77,6 +67,15 @@ const Navbar = () => {
           >
             Login
           </ButtonOutline>
+          <ButtonFill
+            borderWidth="1px"
+            fontSize="1rem"
+            width="auto"
+            padding="0.5rem 1.5rem"
+            onClick={() => setOpenSignup(true)}
+          >
+            Signup
+          </ButtonFill>
         </div>
       </nav>
       <LoginModal show={openLogin} onHide={() => setOpenLogin(false)} />

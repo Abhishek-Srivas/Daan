@@ -1,0 +1,106 @@
+.CP-container {
+  padding: 6rem 6.5vw;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: flex-start;
+}
+
+.CP-card {
+  width: 44rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  /* border: 1px solid #f2f2f2; */
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+}
+
+.CP-h1 {
+  margin: 0.5rem;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 33px;
+  /* identical to box height */
+
+  letter-spacing: 0.03em;
+
+  /* Dark / 01 */
+
+  color: #191e27;
+}
+
+.CP-h2 {
+  margin: 0.5rem;
+  font-size: 20px;
+  line-height: 29px;
+  /* or 145% */
+
+  letter-spacing: 0.03em;
+
+  /* Shade / 01 */
+
+  color: #8c8c8c;
+}
+
+.CP-h3 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+  margin: 1rem 0.5rem 0.5rem 0.5rem;
+  letter-spacing: 0.03em;
+
+  /* Dark / 01 */
+
+  color: #191e27;
+}
+
+.CP-progressbar {
+  margin: 1.5rem 0.5rem;
+}
+
+.CP-rule {
+  padding-right: 6rem !important;
+  border-right: 1px solid #bfbfbf;
+}
+
+.radiogrp {
+  margin-bottom: 1rem;
+}
+.radiogrp div {
+  border-radius: 8px !important;
+}
+
+.CP-form-container {
+  margin-left: 2.5rem;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+.form-h1 {
+  font-family: Ropa Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 34px;
+  letter-spacing: 0.03em;
+
+  color: #000000;
+}
+
+.CP-form-container form {
+  padding-top: 1rem;
+}
+
+.form-h2 {
+  font-family: Ropa Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 17px;
+  letter-spacing: 0.03em;
+  padding: 0.5rem 0%;
+  color: #8c8c8c;
+}
