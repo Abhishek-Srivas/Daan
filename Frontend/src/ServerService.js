@@ -1,7 +1,6 @@
 import axios from "axios";
 import { trackPromise } from "react-promise-tracker";
 export const BASE_URL = "http://localhost:8080";
-// export const BASE_URL = "https://chiranjeev.herokuapp.com";
 
 class ServerService {
   ngoSignup(data) {
