@@ -17,7 +17,9 @@ body {
 p {
   margin: 0%;
 }
-
+a {
+  text-decoration: none !important;
+}
 .hyperModalWrapper___2sZCR.visible___uofxI {
   z-index: 150 !important;
 }
