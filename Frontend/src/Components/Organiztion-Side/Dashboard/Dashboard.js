@@ -44,13 +44,13 @@ class SideBar extends React.Component {
           <span className="line"></span>
           <span className="line"></span>
         </div>
-        <Link to="/hospital/home">
+        <Link to="/organization/home">
           <div className="sidebarLogo">
             <img src={Logo} alt="logo" />
             <span
               style={{
                 margin: "auto 1rem",
-                color: this.state.sidebarOpen ? "#fff" : "#364863",
+                color: "#02030d",
               }}
             >
               Daan
@@ -62,7 +62,7 @@ class SideBar extends React.Component {
           sidebar={
             <div className="sidebarContent">
               <div className="sidebarLinks">
-                <Link to="/hospital/home">
+                <Link to="/organization/home">
                   <div
                     className={
                       this.props.active === "home" ? "activelink" : "sidelink"
@@ -77,42 +77,10 @@ class SideBar extends React.Component {
                   </div>
                 </Link>
 
-                <Link to="/hospital/beddonors">
+                <Link to="/organization/newcampaign">
                   <div
                     className={
-                      this.props.active === "beddonors"
-                        ? "activelink"
-                        : "sidelink"
-                    }
-                    onClick={() => {
-                      // this.setStprops active: "bed donors" });
-                      this.onSetSidebarOpen();
-                    }}
-                  >
-                    <HotelOutlined className="sidebarIcon" />
-                    <span> Bed Donors </span>
-                  </div>
-                </Link>
-                <Link to="/hospital/plasmadonors">
-                  <div
-                    className={
-                      this.props.active === "plasmadonors"
-                        ? "activelink"
-                        : "sidelink"
-                    }
-                    onClick={() => {
-                      // this.setStprops active: "plasma donors" });
-                      this.onSetSidebarOpen();
-                    }}
-                  >
-                    <Opacity className="sidebarIcon" />
-                    <span> Plasma Donors </span>
-                  </div>
-                </Link>
-                <Link to="/hospital/makerequest">
-                  <div
-                    className={
-                      this.props.active === "makerequest"
+                      this.props.active === "newcampaign"
                         ? "activelink"
                         : "sidelink"
                     }
@@ -126,7 +94,7 @@ class SideBar extends React.Component {
                   </div>
                 </Link>
 
-                <Link to="/hospital/editdetails">
+                <Link to="/organization/editdetails">
                   <div
                     className={
                       this.props.active === "editdetails"
@@ -139,7 +107,7 @@ class SideBar extends React.Component {
                     }}
                   >
                     <Edit className="sidebarIcon" />
-                    <span> Edit Details </span>
+                    <span> New Campaign </span>
                   </div>
                 </Link>
                 <Link to="/">
