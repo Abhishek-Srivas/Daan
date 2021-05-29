@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { usePromiseTracker } from "react-promise-tracker";
 import "./Loader.css";
-import Hourglass from "../../../assets/Hourglass.gif";
+import loader from "../../../assets/loader.gif";
 
 const Loader = (props) => {
   const { promiseInProgress } = usePromiseTracker();
@@ -10,7 +10,7 @@ const Loader = (props) => {
     <React.Fragment>
       {promiseInProgress === true ? (
         <div className="LoaderContainer">
-          <img src={Hourglass} className="loader" alt="spinner" />
+          <img src={loader} className="loader" alt="spinner" />
         </div>
       ) : null}
     </React.Fragment>

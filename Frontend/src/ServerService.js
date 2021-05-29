@@ -14,6 +14,10 @@ class ServerService {
   ngoLogin(data) {
     return trackPromise(axios.post(BASE_URL + "/login", data));
   }
+
+  StripePayment(data) {
+    return console.log(data);
+  }
 }
 
 export default new ServerService();

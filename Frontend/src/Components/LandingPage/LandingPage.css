@@ -4,6 +4,7 @@
   width: 100vw !important;
   overflow-x: hidden;
   color: #02030d;
+  position: relative;
 }
 
 /* section 1 */

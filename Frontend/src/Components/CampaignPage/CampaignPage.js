@@ -5,6 +5,7 @@ import cardImg from "../../assets/cardImg2.png";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
 import { RadioGroup, ReversedRadioButton } from "react-radio-buttons";
+import { ButtonFill } from "../UI Elements/Buttons/Buttons";
 
 const CampaignPage = () => {
   return (
@@ -91,7 +92,11 @@ const CampaignPage = () => {
             </RadioGroup>
 
             <p className="form-h2">Or Enter Custom amount to donate.</p>
-            <input />
+            <input type="number" name="amount" placeholder="Enter amount" />
+            <p className="form-h2">Donor's Information</p>
+            <input type="text" name="name" placeholder="Full Name" />
+            <input type="email" name="email" placeholder="Enter Email" />
+            <ButtonFill width="100%">Donate Money</ButtonFill>
           </form>
         </div>
       </div>

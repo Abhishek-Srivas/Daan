@@ -155,7 +155,6 @@ const SignupModal = (props) => {
         });
 
       setSuccess(false);
-      
     }
   };
   if (redirect) {
@@ -275,9 +274,6 @@ const SignupModal = (props) => {
                 </ButtonFill>
               </div>
             </form>{" "}
-            <p className="bottom-link">
-              Already have an account? <Link to="/login">Login</Link>
-            </p>
           </>
         )}
       </div>

@@ -11,9 +11,11 @@ import education from "../../assets/icons/education.svg";
 import img2 from "../../assets/LandingPage/img2.png";
 import CampaignCard from "../UI Elements/CampaignCard/CampaignCard";
 import Carousel from "react-elastic-carousel";
+import Loader from "../UI Elements/Loader/Loader";
 const LandingPage = () => {
   return (
     <div className="LandingPage">
+      <Loader />
       <section className="section1">
         <Navbar />
         <div className="LP-heading">

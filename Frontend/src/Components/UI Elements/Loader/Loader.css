@@ -4,7 +4,7 @@
   height: 100vh;
   background: rgba(54, 72, 99, 0.4);
   /* background-attachment: fixed; */
-  z-index: 49;
+  z-index: 500;
   top: 0%;
   left: 0%;
 }
@@ -15,4 +15,5 @@
   position: absolute;
   top: 45%;
   left: 42.5%;
+  z-index: 500;
 }

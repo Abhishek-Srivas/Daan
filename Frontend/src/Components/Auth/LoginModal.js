@@ -82,10 +82,9 @@ const LoginModal = (props) => {
           setAlertData(alertData);
           setSuccess(true);
           localStorage.setItem("id", result.data._id);
-          
-            const timer = setTimeout(() => setRedirect("/Dasboard"), 3000);
-            return () => clearTimeout(timer);
-          
+
+          const timer = setTimeout(() => setRedirect("/Dasboard"), 3000);
+          return () => clearTimeout(timer);
         })
         .catch((err) => {
           const alertData = {
@@ -146,10 +145,6 @@ const LoginModal = (props) => {
               </ButtonFill>
             </div>
           </form>
-
-          <p className="bottom-link">
-            Don't have an account? <Link to="/signup">Create Account</Link>
-          </p>
         </div>
 
         {success ? <Alert alertdata={alertdata} /> : ""}
