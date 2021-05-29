@@ -47,7 +47,7 @@ exports.getCampaigns = async (req, res, next) => {
             const ngo = await Ngo.findById(req.query.id)
                 .select("-password")
                 .skip(limit * (page - 1))
-                .limit(limit);;
+                .limit(limit);
 
             if (!ngo) throw new MyError(404, "campaign not found");
 
@@ -57,11 +57,41 @@ exports.getCampaigns = async (req, res, next) => {
             });
 
         }
+        else if (req.query.category && req.query.city) {
+            const ngo = await Ngo.find({
+                $and: [
+                    { city: { $regex: req.query.city } },
+                    { category: req.query.category  }
+                ]
+            }).select("-password")
+                .skip(limit * (page - 1))
+                .limit(limit);
+
+            if (!ngo) throw new MyError(404, "campaign not found");
+
+            res.json({
+                success: true,
+                data: ngo
+            });
+        }
+        else if (req.query.city) {
+            const ngo = await Ngo.find({ city: { $regex: req.query.city } })
+                .select("-password")
+                .skip(limit * (page - 1))
+                .limit(limit);
+
+            if (!ngo) throw new MyError(404, "campaign not found");
+
+            res.json({
+                success: true,
+                data: ngo
+            });
+        }
         else {
             const ngo = await Ngo.find()
                 .select("-password")
                 .skip(limit * (page - 1))
-                .limit(limit);;
+                .limit(limit);
 
 
             if (!ngo) throw new MyError(404, "No campaign found");

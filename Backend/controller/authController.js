@@ -37,9 +37,15 @@ const ngoLoginSchema = yup.object().shape({
     password: yup.string().required()
 }, [['contact', 'email', 'password']]);
 
+const editNgoDetails = yup.object({
+    ngoName: yup.string(),
+    email: yup.string().email(),
+    contact: yup.number(),
+    password: yup.string()
+})
+
 exports.signup = async (req, res, next) => {
     try {
-        console.log("here");
         const data = await ngoSignupSchema
             .validate({
                 ...req.body,
@@ -109,7 +115,7 @@ exports.otpVerification = async (req, res, next) => {
 
         const hashPassword = bcrypt.hashSync(data.password, 10);
         delete data.password;
-        
+
 
         try {
             const ngo = await Ngo.create({ ...data, password: hashPassword });
@@ -134,8 +140,6 @@ exports.otpVerification = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
     try {
-        console.log("hereee")
-        console.log(req.body)
         const data = await ngoLoginSchema
             .validate({
                 ...req.body,
@@ -144,36 +148,59 @@ exports.login = async (req, res, next) => {
                 throw new MyError(400, err.errors?.[0]);
             });
         // console.log(data.password);
-            const ngo = await Ngo.findOne({
-                $or: [
-                    { contact: data.contact },
-                    { email: data.email }
-                ]
-            });
+        const ngo = await Ngo.findOne({
+            $or: [
+                { contact: data.contact },
+                { email: data.email }
+            ]
+        });
 
-            if (!ngo) throw new MyError(404, "Ngo Not Found");
-            //chekc if password entered is correct or not
-            if (!bcrypt.compareSync(data.password, ngo.password))
-                throw new MyError(403, "Invalid password");
+        if (!ngo) throw new MyError(404, "Ngo Not Found");
+        //chekc if password entered is correct or not
+        if (!bcrypt.compareSync(data.password, ngo.password))
+            throw new MyError(403, "Invalid password");
 
 
-            const token = JWT.sign({ _id: ngo._id }, process.env.SUPERSECRET, { expiresIn: '6h' });
-            ngo.token = token;
-            await ngo.save();
-            res.json({
-                success: true,
-                token: token,
-                data: ngo
-            });
+        const token = JWT.sign({ _id: ngo._id }, process.env.SUPERSECRET, { expiresIn: '6h' });
+        ngo.token = token;
+        await ngo.save();
+        res.json({
+            success: true,
+            token: token,
+            data: ngo
+        });
     } catch (error) {
         next(error)
     }
 };
 
-exports.isAuthCheck = async (req,res,next) =>{
+exports.isAuthCheck = async (req, res, next) => {
     try {
         res.send("isAuth middleware working")
     } catch (error) {
         next(error);
     }
-}
+};
+
+exports.editDetails = async (req, res, next) => {
+    try {
+        const data = await editNgoDetails
+            .validate({
+                ...req.body,
+            })
+            .catch((err) => {
+                throw new MyError(400, err.errors?.[0]);
+            });
+        if (data.password) {
+            const hashPassword = bcrypt.hashSync(data.password, 10);
+            data.password = hashPassword;
+        }
+        const ngo = await Ngo.findByIdAndUpdate(req.ngo.id, data);
+        res.json({
+            success: true,
+            data: "details updated successfully"
+        })
+    } catch (error) {
+        next(error);
+    }
+};
