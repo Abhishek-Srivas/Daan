@@ -11,23 +11,76 @@
   align-items: center;
   justify-content: center;
   padding: 19px 32px;
-  width: 40.3vw;
-  height: 78.12vh;
+  width: 40vw;
+  min-height: 80vh;
   background: #ffffff;
   border-radius: 12px;
-  box-shadow: 2px 4px 20px rgba(0, 0, 0, 0.288);
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
 }
 
-.NewCampaingForm-detail {
-  height: 25.2vh;
+.NewCampaingForm input {
+  font-family: Ropa Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  color: #364863;
+}
+.NewCampaingForm input::placeholder,
+.NewCampaingForm textarea::placeholder {
+  font-family: Ropa Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  color: #364863;
+}
+
+.NewCampaingForm textarea {
+  font-family: Ropa Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  color: #364863;
+  width: 90%;
+  margin: 0.5rem 1rem;
+  border-radius: 16px;
+  padding-top: 0.5rem;
+  padding-left: 2rem;
+  border: none;
+  background: #eef0f4;
+}
+
+.NewCampaingForm textarea:focus {
+  outline: none;
+  border: 1px solid #ff5224;
+}
+
+.uploadImg {
+  font-family: Ropa Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.2rem;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  color: #364863;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .NewCampaingForm-Tag {
-  font-size: 1rem;
+  font-family: Ropa Sans;
+  font-style: normal;
   font-weight: normal;
-  font-family: Montserrat, sans-serif;
+  font-size: 1rem;
+  line-height: 21px;
+  letter-spacing: 0.03em;
   color: #364863;
-  line-height: normal;
+
   border-radius: 1rem;
   height: 3.25rem;
   width: 36rem;
@@ -39,7 +92,7 @@
 
 .NewCampaingForm-Tag:focus {
   outline: none;
-  border: 2px solid #ff5224;
+  border: 1px solid #ff5224;
 }
 
 .NewCampaingForm-Tag option[value=""][disabled] {
@@ -47,10 +100,11 @@
 }
 
 .NewCampaingForm-Tag option {
-  font-size: 1rem;
   font-weight: normal;
-
+  font-family: Ropa Sans;
+  font-style: normal;
+  font-weight: normal;
   color: #364863;
   line-height: normal;
-  font-family: Montserrat, sans-serif;
+  padding: 0.5rem;
 }

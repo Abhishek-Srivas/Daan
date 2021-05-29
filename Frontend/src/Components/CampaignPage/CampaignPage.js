@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavbarSolid from "../UI Elements/Navbar/NavbarSolid";
 import "./CampaignPage.css";
 import cardImg from "../../assets/cardImg2.png";
@@ -6,31 +6,43 @@ import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
 import Loader from "../UI Elements/Loader/Loader";
 import Payment from "../PaymentGateway/payment";
+import ServerService from "../../ServerService";
 
-const CampaignPage = () => {
+const CampaignPage = (props) => {
+  const [details, setDetails] = useState("");
+
+  useEffect(() => {
+    ServerService.campaignDetails(id).then((res) => {
+      console.log(res);
+      setDetails(res.data.data);
+    });
+  }, []);
+  const id = props.match.params.id;
+  let percent = "";
+  let ToGo = "";
+  if (details) {
+    percent = (details.amountRaised / details.goal) * 100;
+    ToGo = details.goal - details.amountRaised;
+  }
+
   return (
     <React.Fragment>
       <Loader />
       <NavbarSolid />
       <div className="CP-container">
         <div className="CP-card">
-          <img src={cardImg} width="100%" alt="" />
-          <p className="CP-h1">Gift an Education... Make Better Life.</p>
-          <p className="CP-h2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor amet
-            mi sem arcu pellentesque enim egestas luctus. Amet tortor, neque,
-            nunc aliquet arcu. Tristique elementum nunc pharetra nunc, orci.
-            Venenatis at sollicitudin consectetur at amet, tortor sagittis.
-            Sagittis quam venenatis, vitae lorem lorem id morbi. Scelerisque
-            aliquam ut vulputate venenatis fringilla. Sit viverra in blandit
-            varius et cursus. Sit facilisi aliquet dui in odio est in elit.
-            Tortor vitae interdum purus sagittis. Sit.
-          </p>
+          <img
+            src={details ? details.photo : ""}
+            width="100%"
+            alt="Campaign Image"
+          />
+          <p className="CP-h1">{details ? details.title : ""}</p>
+          <p className="CP-h2">{details ? details.description : ""}</p>
           <p className="CP-h3">By - Daan NGO</p>
           <div className="CP-progressbar">
             <Progress
               status="default"
-              percent={55}
+              percent={percent}
               theme={{
                 default: {
                   color: "#ff5224",
@@ -42,23 +54,27 @@ const CampaignPage = () => {
             <p className="CP-rule">
               <span className="cc-h3">Goal</span>
               <br />
-              <span className="cc-h4">&#8377; 5000</span>
+              <span className="cc-h4">
+                &#8377; {details ? details.goal : ""}
+              </span>
             </p>
             <p className="CP-rule">
               <span className="cc-h3">Raised</span>
               <br />
-              <span className="cc-h4">&#8377; 3000</span>
+              <span className="cc-h4">
+                &#8377; {details ? details.amountRaised : ""}
+              </span>
             </p>
             <p>
               <span className="cc-h3">To Go</span>
               <br />
-              <span className="cc-h4">&#8377; 2000</span>
+              <span className="cc-h4">&#8377; {ToGo}</span>
             </p>
           </div>
         </div>
         <div className="CP-form-container">
           <p className="form-h1">Donate</p>
-          <Payment />
+          <Payment id={id} />
         </div>
       </div>
     </React.Fragment>

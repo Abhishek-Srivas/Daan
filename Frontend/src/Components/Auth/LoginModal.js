@@ -81,7 +81,7 @@ const LoginModal = (props) => {
           console.log(result);
           setAlertData(alertData);
           setSuccess(true);
-          localStorage.setItem("id", result.data._id);
+          localStorage.setItem("id", result.data.data._id);
 
           const timer = setTimeout(
             () => setRedirect("/organization/home"),

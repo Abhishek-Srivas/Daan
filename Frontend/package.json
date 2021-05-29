@@ -10,11 +10,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
-<<<<<<< HEAD
     "crypto-js": "^4.0.0",
-=======
-    "firebase": "^8.6.3",
->>>>>>> 576d2632c7a82f32e94e8621c6a495d9c7310409
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-elastic-carousel": "^0.11.5",

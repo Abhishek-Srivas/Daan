@@ -8,11 +8,23 @@ import { Link } from "react-router-dom";
 const CampaignCard = (props) => {
   const percent = (props.raised / props.goal) * 100;
   const ToGo = props.goal - props.raised;
+
+  var yourString = props.description; //replace with your string.
+  var maxLength = 60; // maximum number of characters to extract
+
+  //trim the string to the maximum length
+  var trimmedString = yourString.substr(0, maxLength);
+
+  //re-trim if we are in the middle of a word
+  trimmedString = trimmedString.substr(
+    0,
+    Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))
+  );
   return (
     <div className="cc">
-      <img src={cardImg} width="100%" alt="card-img" />
+      <img src={props.photo} width="100%" alt="card-img" />
       <p className="cc-h1">{props.title}</p>
-      <p className="cc-h2">{props.description}</p>
+      <p className="cc-h2">{trimmedString}...</p>
       <div className="progressbar">
         <Progress
           status="default"
@@ -43,7 +55,7 @@ const CampaignCard = (props) => {
       </div>
       <Link to={"/campaign/" + props.id}>
         <ButtonOutline change="true" width="100%">
-          Donate
+          View Details
         </ButtonOutline>
       </Link>
     </div>

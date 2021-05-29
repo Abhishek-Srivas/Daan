@@ -90,26 +90,10 @@ class SideBar extends React.Component {
                     }}
                   >
                     <AddCircleOutline className="sidebarIcon" />
-                    <span> Make Request </span>
+                    <span> Create Campaign </span>
                   </div>
                 </Link>
 
-                <Link to="/organization/volunteer">
-                  <div
-                    className={
-                      this.props.active === "volunteer"
-                        ? "activelink"
-                        : "sidelink"
-                    }
-                    onClick={() => {
-                      // this.setStprops active: "make request" });
-                      this.onSetSidebarOpen();
-                    }}
-                  >
-                    <Edit className="sidebarIcon" />
-                    <span> Volunteer Request </span>
-                  </div>
-                </Link>
                 <Link to="/">
                   <div
                     className="sidelink"

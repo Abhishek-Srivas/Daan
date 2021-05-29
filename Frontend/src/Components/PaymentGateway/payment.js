@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { trackPromise } from "react-promise-tracker";
 
 import Alert from "../UI Elements/Alerts/Alerts";
 import { RadioGroup, ReversedRadioButton } from "react-radio-buttons";
 import { ButtonFill } from "../UI Elements/Buttons/Buttons";
+import { BASE_URL } from "../../ServerService";
 const defaultInputForm = {
-  amount: 100,
+  amount: "",
+  name: "",
+  email: "",
 };
 
 const altData = {
@@ -13,13 +17,12 @@ const altData = {
   type: false,
 };
 
-function Payment() {
+function Payment(props) {
   const [inputForm, setInputForm] = useState(defaultInputForm);
   const [alertdata, setAlertData] = useState(altData);
   const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
-    e.persist();
     setInputForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -52,10 +55,7 @@ function Payment() {
       amount: inputForm.amount,
     };
     console.log(data);
-    const result = await axios.post(
-      "http://bee5d06c52b6.ngrok.io/payment/orders",
-      data
-    );
+    const result = await axios.post(BASE_URL + "/payment/orders", data);
 
     if (!result) {
       alert("Server error. Are you online?");
@@ -78,12 +78,11 @@ function Payment() {
           razorpayPaymentId: response.razorpay_payment_id,
           razorpayOrderId: response.razorpay_order_id,
           razorpaySignature: response.razorpay_signature,
+          ...inputForm,
+          id: props.id,
         };
 
-        const result = await axios.post(
-          "http://bee5d06c52b6.ngrok.io/payment/success",
-          data
-        );
+        const result = await axios.post(BASE_URL + "/payment/success", data);
         const alertData = {
           message: result.data.msg,
           type: true,
@@ -115,7 +114,6 @@ function Payment() {
       <form onSubmit={displayRazorpay}>
         <p className="form-h2">Choose ammount you want to donate.</p>
         <RadioGroup
-          value={inputForm.amount}
           onChange={(value) => {
             setInputForm((prev) => ({ ...prev, amount: value }));
           }}
@@ -155,8 +153,20 @@ function Payment() {
           value={inputForm.amount}
         />
         <p className="form-h2">Donor's Information</p>
-        <input type="text" name="name" placeholder="Full Name" required />
-        <input type="email" name="email" placeholder="Enter Email" required />
+        <input
+          type="text"
+          name="name"
+          placeholder="Full Name"
+          required
+          onChange={handleChange}
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter Email"
+          required
+          onChange={handleChange}
+        />
         <ButtonFill width="100%" type="submit">
           Donate Money
         </ButtonFill>

@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { ButtonFill } from "../../UI Elements/Buttons/Buttons";
-import './NewCampaing.css'
+import "./NewCampaing.css";
 const formValues = {
   image: "",
   heading: "",
-  discription: "",
+  description: "",
   tag: "",
   amount: "",
 };
 
 const NewCampaing = () => {
   const [campaingValues, setCampaingForm] = useState(formValues);
-
-  
 
   const formHandler = (e) => {
     const { name, value } = e.target;
@@ -27,55 +25,49 @@ const NewCampaing = () => {
     <div className="NewCampaing-Container">
       <form className="NewCampaingForm" onSubmit={formHandler}>
         <input
-          value={formValues.heading}
           type="text"
           onChange={formHandler}
           className="HospitalSignupForm-Input"
-          placeholder="Heading"
+          placeholder="Title"
           name="heading"
         />
-        {/* <div className="Validation">
-          {errors.emailS && <p>{errors.emailS}</p>}
-        </div> */}
-        <input
-          value={formValues.discription}
-          type="password"
+
+        <textarea
           onChange={formHandler}
-          className="HospitalSignupForm-Input NewCampaingForm-detail"
-          placeholder="discription"
-          name="discription"
+          // className="HospitalSignupForm-Input "
+          placeholder="Description"
+          name="description"
+          maxLength="200"
+          rows="5"
         />
-        {/* <div className="Validation">
-          {errors.passwordS && <p>{errors.passwordS}</p>}
-        </div> */}
-        <input
-          value={formValues.discription}
-          type="password"
+
+        <select
           onChange={formHandler}
-          className="HospitalSignupForm-Input"
-          placeholder="Passowrd"
-          name="password"
-        />
-        {/* <div className="Validation">
-          {errors.passwordS && <p>{errors.passwordS}</p>}
-        </div> */}
-        <select onChange={formHandler} name="Tag" className="NewCampaingForm-Tag">
-                <option value="" disabled selected>
-                  Choose your tag
-                </option>
-                <option value="Money">Money</option>
-                <option value="Education">Education</option>
-                <option value="Clothes">Clothes</option>
-                <option value="Blood">Blood</option>
-                <option value="Beds not available">Food/Water</option>
+          name="Tag"
+          className="NewCampaingForm-Tag"
+        >
+          <option value="" disabled selected>
+            Choose your tag
+          </option>
+          <option value="Money">Money</option>
+          <option value="Education">Education</option>
+          <option value="Clothes">Clothes</option>
+          <option value="Blood">Blood</option>
+          <option value="Beds not available">Food/Water</option>
         </select>
         <input
-          value={formValues.amount}
-          type="text"
+          type="number"
           onChange={formHandler}
           className="HospitalSignupForm-Input"
-          placeholder="Amount"
+          placeholder="Amount to be raised"
           name="amount"
+        />
+        <p className="uploadImg">Upload an Image for your Campaign</p>
+        <input
+          type="file"
+          name="my-image"
+          id="image"
+          accept="image/jpeg, image/png, image/svg"
         />
         <div className="HospitalSignup-Button">
           <ButtonFill type="submit" width="100%">

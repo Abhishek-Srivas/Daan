@@ -3,33 +3,25 @@ import cardImg from "../../../assets/cardImg.png";
 import { ButtonOutline } from "../Buttons/Buttons";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
+import DeleteIcon from "@material-ui/icons/Delete";
 
-const data = {
-  heading: "Gift an Education... Make Better Life.",
-  detail:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et mauris auctor pretium, amet proin nis",
-  percent:56,
-  amount:5000,
-  raised:3000,
-  pending:2000
-};
+const DashboardCard = (props) => {
+  const percent = (props.raised / props.goal) * 100;
+  const ToGo = props.goal - props.raised;
 
-const CampaignCard = () => {
   return (
-    
     <div className="DashBoardCard-Container">
-      <div className="DashBoardCard-image"> 
-        <img src={cardImg} width="100%" alt="card-img" />
+      <div className="DashBoardCard-image">
+        <img src={props.photo} width="100%" alt="card-img" />
       </div>
-      
+
       <div className="DashBoardCard-Content">
-        <p className="dc-h1">{data.heading}</p>
-        <p className="dc-h2">
-          {data.detail}
-        </p>
+        <p className="dc-h1">{props.title}</p>
+        <p className="dc-h2">{props.description}</p>
         <div className="dc-progressbar">
           <Progress
             status="default"
-            percent={data.percent}
+            percent={percent}
             theme={{
               default: {
                 color: "#ff5224",
@@ -41,29 +33,29 @@ const CampaignCard = () => {
           <p className="cc-rule">
             <span className="cc-h3">Goal</span>
             <br />
-            <span className="cc-h4">&#8377; {data.amount}</span>
+            <span className="cc-h4">&#8377; {props.goal}</span>
           </p>
           <p className="cc-rule">
             <span className="cc-h3">Raised</span>
             <br />
-            <span className="cc-h4">&#8377; {data.raised} </span>
+            <span className="cc-h4">&#8377; {props.raised} </span>
           </p>
           <p>
             <span className="cc-h3">To Go</span>
             <br />
-            <span className="cc-h4">&#8377; {data.pending}</span>
+            <span className="cc-h4">&#8377; {ToGo}</span>
           </p>
         </div>
-       
       </div>
       <div>
-      <ButtonOutline change="true" width="100%">
-          Edit
-        </ButtonOutline>
+        <DeleteIcon
+          className="deleteIcon"
+          onClick={props.deleteHandler}
+          style={{ fontSize: 28 }}
+        />
       </div>
     </div>
- 
   );
 };
 
-export default CampaignCard;
+export default DashboardCard;

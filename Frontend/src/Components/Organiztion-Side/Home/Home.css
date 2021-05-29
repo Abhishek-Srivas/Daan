@@ -1,0 +1,18 @@
+.HomeContainer {
+  padding: 2rem;
+}
+
+.HC-h1 {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  /* identical to box height */
+
+  letter-spacing: 0.03em;
+
+  /* Dark / 00 */
+
+  color: #02030d;
+}
