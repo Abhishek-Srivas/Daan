@@ -1,6 +1,7 @@
 import axios from "axios";
 import { trackPromise } from "react-promise-tracker";
-export const BASE_URL = "http://localhost:8080";
+// export const BASE_URL = "http://localhost:8080";
+export const BASE_URL = "http://bee5d06c52b6.ngrok.io";
 
 class ServerService {
   ngoSignup(data) {
@@ -15,8 +16,8 @@ class ServerService {
     return trackPromise(axios.post(BASE_URL + "/login", data));
   }
 
-  StripePayment(data) {
-    return console.log(data);
+  campaigns() {
+    return trackPromise(axios.get(BASE_URL + "/campaign"));
   }
 }
 

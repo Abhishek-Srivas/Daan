@@ -4,12 +4,13 @@ import "./CampaignPage.css";
 import cardImg from "../../assets/cardImg2.png";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
-import { RadioGroup, ReversedRadioButton } from "react-radio-buttons";
-import { ButtonFill } from "../UI Elements/Buttons/Buttons";
+import Loader from "../UI Elements/Loader/Loader";
+import Payment from "../PaymentGateway/payment";
 
 const CampaignPage = () => {
   return (
     <React.Fragment>
+      <Loader />
       <NavbarSolid />
       <div className="CP-container">
         <div className="CP-card">
@@ -57,47 +58,7 @@ const CampaignPage = () => {
         </div>
         <div className="CP-form-container">
           <p className="form-h1">Donate</p>
-          <form>
-            <p className="form-h2">Choose ammount you want to donate.</p>
-            <RadioGroup
-              value="100"
-              onChange={(value) => {
-                console.log(value);
-              }}
-              horizontal
-              className="radiogrp"
-            >
-              <ReversedRadioButton
-                pointColor="#FF5224"
-                rootColor="#8C8C8C"
-                value="100"
-                style={{ borderRadius: "16px!important" }}
-              >
-                &#8377; 100
-              </ReversedRadioButton>
-              <ReversedRadioButton
-                pointColor="#FF5224"
-                rootColor="#8C8C8C"
-                value="200"
-              >
-                &#8377; 200
-              </ReversedRadioButton>
-              <ReversedRadioButton
-                pointColor="#FF5224"
-                rootColor="#8C8C8C"
-                value="500"
-              >
-                &#8377; 500
-              </ReversedRadioButton>
-            </RadioGroup>
-
-            <p className="form-h2">Or Enter Custom amount to donate.</p>
-            <input type="number" name="amount" placeholder="Enter amount" />
-            <p className="form-h2">Donor's Information</p>
-            <input type="text" name="name" placeholder="Full Name" />
-            <input type="email" name="email" placeholder="Enter Email" />
-            <ButtonFill width="100%">Donate Money</ButtonFill>
-          </form>
+          <Payment />
         </div>
       </div>
     </React.Fragment>

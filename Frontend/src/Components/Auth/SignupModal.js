@@ -141,7 +141,10 @@ const SignupModal = (props) => {
           };
           setAlertData(alertData);
           setSuccess(true);
-          const timer = setTimeout(() => setRedirect("Dasboard"), 3000);
+          const timer = setTimeout(
+            () => setRedirect("organization/home"),
+            3000
+          );
           return () => clearTimeout(timer);
         })
         .catch((err) => {
