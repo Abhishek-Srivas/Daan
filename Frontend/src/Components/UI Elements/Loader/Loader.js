@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { usePromiseTracker } from "react-promise-tracker";
 import "./Loader.css";
-import Hourglass from "../../../Assets/Hourglass.gif";
+import Hourglass from "../../../assets/Hourglass.gif";
 
 const Loader = (props) => {
   const { promiseInProgress } = usePromiseTracker();

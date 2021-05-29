@@ -15,10 +15,7 @@
     "react-elastic-carousel": "^0.11.5",
     "react-hyper-modal": "^1.2.11",
     "react-promise-tracker": "^2.1.0",
-<<<<<<< HEAD
     "react-radio-buttons": "^1.2.2",
-=======
->>>>>>> 25ffa387f834f24671f4cbf000bbbe64a04fedab
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
