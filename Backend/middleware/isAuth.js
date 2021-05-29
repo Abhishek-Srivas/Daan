@@ -12,7 +12,7 @@ exports.validateNgo = async (req, res, next) => {
     
     const token=authorization.replace("Bearer ","");
 
-    console.log(authorization);
+    console.log(token);
 
     jwt.verify(token,process.env.SUPERSECRET,(err,payload)=>{
         if(err){
@@ -22,14 +22,14 @@ exports.validateNgo = async (req, res, next) => {
         const {_id}=payload;
         Ngo.findById(_id)
         .then(result =>{
-            if(result.token !== token ) throw new MyError(
-                404,
-                "You are logged out because you logged in with some other device. Please login again."
-              );
-              else{
+            // if(result.token !== token ) throw new MyError(
+            //     404,
+            //     "You are logged out because you logged in with some other device. Please login again."
+            //   );
+            //   else{
                 req.ngo=result;
                 next();
-              }
+             // }
         })
         .catch(error =>{
             next(error);

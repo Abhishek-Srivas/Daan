@@ -5,76 +5,86 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 
 const router = express.Router();
-
+const MoneyDonate = require("../model/moneyDonate");
+const Campaign = require("../model/campaignModel");
 const PaymentDetailsSchema = mongoose.Schema({
-  razorpayDetails: {
-    orderId: String,
-    paymentId: String,
-    signature: String,
-  },
-  success: Boolean,
+    razorpayDetails: {
+        orderId: String,
+        paymentId: String,
+        signature: String,
+    },
+    success: Boolean,
 });
 
 const PaymentDetails = mongoose.model('PatmentDetail', PaymentDetailsSchema);
 
 router.post('/orders', async (req, res) => {
-  try {
-    const instance = new Razorpay({
-      key_id: process.env.RAZORPAY_KEY_ID, // YOUR RAZORPAY KEY
-      key_secret: process.env.RAZORPAY_SECRET, // YOUR RAZORPAY SECRET
-    });
+    try {
+        const instance = new Razorpay({
+            key_id: process.env.RAZORPAY_KEY_ID, // YOUR RAZORPAY KEY
+            key_secret: process.env.RAZORPAY_SECRET, // YOUR RAZORPAY SECRET
+        });
 
-    const options = {
-      amount: req.body.amount * 100,
-      currency: 'INR',
-      receipt: 'receipt_order_74394',
-    };
+        const options = {
+            amount: req.body.amount * 100,
+            currency: 'INR',
+            receipt: 'receipt_order_74394',
+        };
+        console.log(req.body);
 
-    const order = await instance.orders.create(options);
+        const order = await instance.orders.create(options);
+        
+        if (!order) return res.status(500).send('Some error occured');
+       
 
-    if (!order) return res.status(500).send('Some error occured');
-
-    res.json(order);
-  } catch (error) {
-    res.status(500).send(error);
-  }
+        res.json(order);
+    } catch (error) {
+        res.status(500).send(error);
+    }
 });
 
 router.post('/success', async (req, res) => {
-  try {
-    const {
-      orderCreationId,
-      razorpayPaymentId,
-      razorpayOrderId,
-      razorpaySignature,
-    } = req.body;
+    try {
+        const {
+            orderCreationId,
+            razorpayPaymentId,
+            razorpayOrderId,
+            razorpaySignature,
+            id,
+            amount,
+            name,
+            email
+        } = req.body;
 
-    const shasum = crypto.createHmac('sha256', process.env.REACT_APP_RAZORPAY_KEY_SECRET);
-    shasum.update(`${orderCreationId}|${razorpayPaymentId}`);
-    const digest = shasum.digest('hex');
+        const shasum = crypto.createHmac('sha256', process.env.REACT_APP_RAZORPAY_KEY_SECRET);
+        shasum.update(`${orderCreationId}|${razorpayPaymentId}`);
+        const digest = shasum.digest('hex');
 
-    if (digest !== razorpaySignature)
-      return res.status(400).json({ msg: 'Transaction not legit!' });
+        if (digest !== razorpaySignature)
+            return res.status(400).json({ msg: 'Transaction not legit!' });
 
-    const newPayment = PaymentDetails({
-      razorpayDetails: {
-        orderId: razorpayOrderId,
-        paymentId: razorpayPaymentId,
-        signature: razorpaySignature,
-      },
-      success: true,
-    });
+        const newPayment = PaymentDetails({
+            razorpayDetails: {
+                orderId: razorpayOrderId,
+                paymentId: razorpayPaymentId,
+                signature: razorpaySignature,
+            },
+            success: true,
+        });
 
-    await newPayment.save();
-
-    res.json({
-      msg: 'success',
-      orderId: razorpayOrderId,
-      paymentId: razorpayPaymentId,
-    });
-  } catch (error) {
-    res.status(500).send(error);
-  }
+        await newPayment.save();
+        const campaign = await Campaign.findById(id);
+        const raise = campaign.amountRaised + Number(amount);
+        campaign.amountRaised = raise;
+        await campaign.save();
+        res.json({
+            msg: 'success',
+            orderId: razorpayOrderId,
+            paymentId: razorpayPaymentId,
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
 });
 
 module.exports = router;
