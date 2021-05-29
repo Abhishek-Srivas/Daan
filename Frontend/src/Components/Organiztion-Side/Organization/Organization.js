@@ -20,8 +20,8 @@ const Organiztion = (props) => {
       <div className="hospitalContent">
         <Loader />
         <Switch>
-          <Route exact path="/Organization/home" component={Home} />
-          <Route exact path="/organization/newcampaing" component={newCampaing} />
+          <Route exact path="/organization/home" component={Home} />
+          <Route path="/organization/newcampaign" component={newCampaing} />
         </Switch>
       </div>
     </DashBoard>

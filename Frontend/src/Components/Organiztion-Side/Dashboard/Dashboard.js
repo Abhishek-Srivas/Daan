@@ -94,10 +94,10 @@ class SideBar extends React.Component {
                   </div>
                 </Link>
 
-                <Link to="/organization/editdetails">
+                <Link to="/organization/volunteer">
                   <div
                     className={
-                      this.props.active === "editdetails"
+                      this.props.active === "volunteer"
                         ? "activelink"
                         : "sidelink"
                     }
@@ -107,7 +107,7 @@ class SideBar extends React.Component {
                     }}
                   >
                     <Edit className="sidebarIcon" />
-                    <span> New Campaign </span>
+                    <span> Volunteer Request </span>
                   </div>
                 </Link>
                 <Link to="/">
