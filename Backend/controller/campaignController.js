@@ -44,30 +44,49 @@ exports.getCampaigns = async (req, res, next) => {
         const limit = req.query.limit * 1 || 50;
 
         if (req.query.id) {
-            const ngo = await Ngo.findById(req.query.id)
-                .select("-password")
+            const ngo = await Campaign.findOne({ _id: req.query.id })
+                .populate("ngo", "-password -token")
                 .skip(limit * (page - 1))
                 .limit(limit);
 
-            if (!ngo) throw new MyError(404, "campaign not found");
+
+            if (!ngo) throw new MyError(404, "No campaign found");
 
             res.json({
                 success: true,
                 data: ngo
             });
-
         }
-        else if (req.query.category && req.query.city) {
-            const ngo = await Ngo.find({
-                $and: [
-                    { city: { $regex: req.query.city } },
-                    { category: req.query.category  }
-                ]
-            }).select("-password")
-                .skip(limit * (page - 1))
-                .limit(limit);
+        else if (req.query.city && req.query.category) {
+            const all = await Campaign.find({ category: req.query.category })
+                .populate("ngo", "-password -token")
+            const ngo = [];
+            all.forEach((element) => {
+                var cmp = (element.ngo.city).toString();
+                cmp = cmp.toLowerCase();
+                if (cmp.match((req.query.city.toLowerCase()))) {
+                    ngo.push(element);
+                }
+            });
+            if (!ngo) throw new MyError(404, "No campaign found");
 
-            if (!ngo) throw new MyError(404, "campaign not found");
+            res.json({
+                success: true,
+                data: ngo
+            });
+        }
+        else if (req.query.category) {
+            const all = await Campaign.find({ category: req.query.category })
+                .populate("ngo", "-password -token")
+            const ngo = [];
+            all.forEach((element) => {
+                var cmp = (element.ngo.city).toString();
+                cmp = cmp.toLowerCase();
+                if (cmp.match((req.query.city.toLowerCase()))) {
+                    ngo.push(element);
+                }
+            });
+            if (!ngo) throw new MyError(404, "No campaign found");
 
             res.json({
                 success: true,
@@ -75,12 +94,19 @@ exports.getCampaigns = async (req, res, next) => {
             });
         }
         else if (req.query.city) {
-            const ngo = await Ngo.find({ city: { $regex: req.query.city } })
-                .select("-password")
-                .skip(limit * (page - 1))
-                .limit(limit);
+            const all = await Campaign.find()
+                .populate("ngo", "-password -token")
+            const ngo = [];
+            all.forEach((element) => {
+                var cmp = (element.ngo.city).toString();
+                cmp = cmp.toLowerCase();
+                if (cmp.match((req.query.city.toLowerCase()))) {
+                    ngo.push(element);
+                }
+            });
 
-            if (!ngo) throw new MyError(404, "campaign not found");
+
+            if (!ngo) throw new MyError(404, "No campaign found");
 
             res.json({
                 success: true,
@@ -88,8 +114,8 @@ exports.getCampaigns = async (req, res, next) => {
             });
         }
         else {
-            const ngo = await Ngo.find()
-                .select("-password")
+            const ngo = await Campaign.find()
+                .populate("ngo", "-password -token")
                 .skip(limit * (page - 1))
                 .limit(limit);
 
@@ -106,3 +132,48 @@ exports.getCampaigns = async (req, res, next) => {
     }
 };
 
+exports.getNgoCampaign = async (req, res, next) => {
+    try {
+        const all = await Campaign.find()
+                .populate("ngo", "-password -token")
+            const campaign = [];
+            all.forEach((element) => {
+                var cmp = (element.ngo._id).toString();
+                cmp = cmp.toLowerCase();
+                if (cmp.match((req.query.id.toLowerCase()))) {
+                    campaign.push(element);
+                }
+            });
+
+
+            if (!campaign) throw new MyError(404, "No campaign found");
+
+            res.json({
+                success: true,
+                data: campaign
+            });
+
+    } catch (error) {
+        next(error);
+    }
+};
+
+exports.delete = async ( req,res,next) =>{
+    try {
+
+        if(req.query.id) 
+        {
+            await Campaign.deleteOne({_id : req.query.id});
+
+            res.json({
+                success : true,
+                data :"deleted"
+            });
+        }
+
+        throw new MyError(404,"Provide id")
+
+    } catch (error) {
+        next(error);
+    }
+};

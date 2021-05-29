@@ -6,12 +6,19 @@ const campaignController = require("../controller/campaignController");
 
 router
   .route("/create-campaign")
-  .post(authMiddleware.validateNgo,campaignController.createCampaign);
+  .post(authMiddleware.validateNgo, campaignController.createCampaign);
 
-router  
+router
   .route("/campaign")
-  .get(campaignController.getCampaigns);
+  .get(campaignController.getCampaigns)
 
+router
+  .route("/get-campaign")
+  .get(authMiddleware.validateNgo,campaignController.getNgoCampaign)
+
+router
+  .route("/delete")
+  .delete(authMiddleware.validateNgo,campaignController.delete);
 // router
 //   .route("/certificate")
 //   .get(campaignController.createCertificate);
