@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ButtonFill, ButtonOutline } from "../UI Elements/Buttons/Buttons";
 import Navbar from "../UI Elements/Navbar/Navbar";
@@ -12,7 +12,33 @@ import img2 from "../../assets/LandingPage/img2.png";
 import CampaignCard from "../UI Elements/CampaignCard/CampaignCard";
 import Carousel from "react-elastic-carousel";
 import Loader from "../UI Elements/Loader/Loader";
+import ServerService from "../../ServerService";
 const LandingPage = () => {
+  const [campaigns, setCampaigns] = useState("");
+
+  useEffect(() => {
+    ServerService.campaigns().then((res) => {
+      console.log(res);
+      setCampaigns(res.data.data);
+    });
+  }, []);
+
+  let campaignList;
+  if (campaigns) {
+    campaignList = campaigns.map((data, index) => {
+      return (
+        <CampaignCard
+          raised={data.amountRaised}
+          description={data.description}
+          photo={data.photo}
+          title={data.title}
+          goal={data.goal}
+          id={data._id}
+        />
+      );
+    });
+  }
+
   return (
     <div className="LandingPage">
       <Loader />
@@ -118,11 +144,7 @@ const LandingPage = () => {
           pagination={false}
           outerSpacing={80}
         >
-          <CampaignCard />
-          <CampaignCard />
-          <CampaignCard />
-          <CampaignCard />
-          <CampaignCard />
+          {campaignList}
         </Carousel>
       </section>
       <section className="footer"></section>
