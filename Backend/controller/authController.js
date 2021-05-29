@@ -6,7 +6,7 @@ const nodemailersendgrid = require("nodemailer-sendgrid-transport")
 const OtpGenerator = require("otp-generator");
 const JWT = require("jsonwebtoken");
 const MyError = require("../error/MyError");
-const Ngo = require("../model//ngoAuthModel");
+const Ngo = require("../model/ngoAuthModel");
 const Otp = require("../model/otpModel");
 
 //sengrid
