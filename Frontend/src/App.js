@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/campaign/:id" exact component={CampaignPage} />
-        <Route path="/" exact component={card} />
+        <Route path="/" exact component={LandingPage} />
         <Route exact path="/organization/:id" component={Organization} />
       </Switch>
     </BrowserRouter>
