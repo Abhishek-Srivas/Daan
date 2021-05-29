@@ -12,4 +12,8 @@ router
   .route("/campaign")
   .get(campaignController.getCampaigns);
 
+// router
+//   .route("/certificate")
+//   .get(campaignController.createCertificate);
+
 module.exports = router;

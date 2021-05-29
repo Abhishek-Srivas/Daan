@@ -12,6 +12,9 @@ dotenv.config();
 //import routes
 const authRoutes = require("./routes/authRoutes");
 const campaignRoutes = require("./routes/campaignRoutes");
+const orderRoutes = require('./routes/order');
+const razorpayRoutes = require('./routes/razorpay');
+const paymentRoutes = require('./routes/payment');
 
 //To remove CROS (cross-resource-origin-platform) problem
 app.use((req, res, next) =>{   
@@ -26,6 +29,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(authRoutes);
 app.use(campaignRoutes);
+app.use(orderRoutes);
+app.use(razorpayRoutes);
+app.use(paymentRoutes);
 // OK route.
 app.get("/", (_req, res) => {
     res.send("OK");
