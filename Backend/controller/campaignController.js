@@ -1,6 +1,6 @@
 const yup = require("yup");
 const MyError = require("../error/MyError");
-const Ngo = require("../model//ngoAuthModel");
+const Ngo = require("../model/ngoAuthModel");
 const Campaign = require("../model/campaignModel");
 
 const campaignSchema = yup.object({

@@ -46,10 +46,10 @@ const LandingPage = () => {
         <Navbar />
         <div className="LP-heading">
           <p className="LP-h1">
-            Your small contributon can make big changes in the world
+            Your small contributon can make big changes in these Hard Times.
           </p>
           <p className="LP-h2">
-            By Sharing your extra good you can make someone’s life better.
+            By Sharing your extra goods you can make someone’s life better. 
           </p>
           <div className="LP-btn-container">
             <Link to="/">
@@ -63,7 +63,7 @@ const LandingPage = () => {
       </section>
       <section className="section2">
         <div className="s2-heading">
-          <p>Connects Nonprofits, donors, &amp; Companies in Every Country</p>
+          <p>Connects NGO, Self Help Group, &amp; Volunteers in the Country</p>
           <img src={donor} alt="donor hands" />
         </div>
         <div className="category-container">
@@ -72,8 +72,7 @@ const LandingPage = () => {
             <div>
               <p>Healthy food</p>
               <p>
-                We help local nonprofit access the funding, tool, training, and
-                support they need to become more
+                Instead of wasting food donate it to those who are starving.
               </p>
             </div>
           </div>
@@ -82,8 +81,7 @@ const LandingPage = () => {
             <div>
               <p>Medical Help</p>
               <p>
-                We help local nonprofit access the funding, tool, training, and
-                support they need to become more
+                If you are healthy, donate blood for others.It is very much needed right now.
               </p>
             </div>
           </div>
@@ -95,8 +93,7 @@ const LandingPage = () => {
             <div>
               <p>Clean Water</p>
               <p>
-                We help local nonprofit access the funding, tool, training, and
-                support they need to become more
+                Everyone need fresh water to stay healthy. Donate some fresh water to those who can't access it.
               </p>
             </div>
           </div>
@@ -105,8 +102,8 @@ const LandingPage = () => {
             <div>
               <p>Education</p>
               <p>
-                We help local nonprofit access the funding, tool, training, and
-                support they need to become more
+                Education is being compramised and we are not paying much attention to it.
+                So Volunteers are must needed for the same.
               </p>
             </div>
           </div>
@@ -115,26 +112,23 @@ const LandingPage = () => {
       <section className="section3">
         <img src={img2} alt="img2" />
         <div>
-          <p className="LP-h3">Help Small - Change Big</p>
+          <p className="LP-h3">Do Daan - Become Daani</p>
           <p className="s3-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et mauris
-            auctor pretium, amet proin nisi, egestas elit. Nisi, lorem commodo
-            pretium pellentesque vitae. Vel pulvinar et, porta dictum nisi
-            gravida tempor vestibulum. Sit velit arcu facilisis ullamcorper duis
-            quis tincidunt platea.
+            Daan means to donate something to someone without expecting something in return and the one who do daan is called
+            Daani. In our culture a Daani had been called the biggest hero of all.
+            So why don't you too become a daani. Because a small contribution can 
+            become a big change.
           </p>
-          <ButtonFill>CTA Button</ButtonFill>
+          <ButtonFill>Search Campaigns</ButtonFill>
         </div>
       </section>
       <section className="section4">
         <div>
           <p className="LP-h3">Our Vision</p>
           <p className="s3-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et mauris
-            auctor pretium, amet proin nisi, egestas elit. Nisi, lorem commodo
-            pretium pellentesque vitae. Vel pulvinar et, porta dictum nisi
-            gravida tempor vestibulum. Sit velit arcu facilisis ullamcorper duis
-            quis tincidunt platea.
+            We aim to provide a platform that can connect NGOs, Self Help Groups with the normal people who want to help other 
+            by donating food,freshwater, health realted things, money etc. and those who want to volunteer their work adn service for 
+            the good of others.
           </p>
           <ButtonFill>CTA Button</ButtonFill>
         </div>
