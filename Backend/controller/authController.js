@@ -134,6 +134,8 @@ exports.otpVerification = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
     try {
+        console.log("hereee")
+        console.log(req.body)
         const data = await ngoLoginSchema
             .validate({
                 ...req.body,

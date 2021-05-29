@@ -11,6 +11,10 @@ class ServerService {
   otpVerify(data) {
     return trackPromise(axios.post(BASE_URL + "/otp-verify", data));
   }
+
+  ngoLogin(data) {
+    return trackPromise(axios.post(BASE_URL + "/login", data));
+  }
 }
 
 export default new ServerService();

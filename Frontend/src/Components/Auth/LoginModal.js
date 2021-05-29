@@ -65,13 +65,13 @@ const LoginModal = (props) => {
 
     if (errors.pass) {
       const data = {
-        Email: login.email,
-        Password: login.password,
+        email: login.email,
+        password: login.password,
       };
 
       localStorage.setItem("email", login.email);
       console.log(data);
-      ServerService.hospitalLogin(data)
+      ServerService.ngoLogin(data)
         .then((result) => {
           localStorage.setItem("token", result.data.token);
           const alertData = {
@@ -81,21 +81,15 @@ const LoginModal = (props) => {
           console.log(result);
           setAlertData(alertData);
           setSuccess(true);
-          localStorage.setItem("id", result.data.HospitalDetails._id);
-          if (result.data.HospitalDetails.City === "UpdateInfo") {
-            const timer = setTimeout(
-              () => setRedirect("hospitaldetails"),
-              3000
-            );
+          localStorage.setItem("id", result.data._id);
+          
+            const timer = setTimeout(() => setRedirect("/Dasboard"), 3000);
             return () => clearTimeout(timer);
-          } else {
-            const timer = setTimeout(() => setRedirect("hospital/home"), 3000);
-            return () => clearTimeout(timer);
-          }
+          
         })
         .catch((err) => {
           const alertData = {
-            message: err.response.data.Error,
+            message: err.response.data.Error || "some error occured",
             type: false,
           };
 
@@ -108,7 +102,7 @@ const LoginModal = (props) => {
   };
 
   if (redirect) {
-    return <Redirect to={`/${redirect}`} />;
+    return <Redirect to={`${redirect}`} />;
   }
 
   return (
