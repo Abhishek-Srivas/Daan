@@ -16,6 +16,15 @@ const PaymentDetailsSchema = mongoose.Schema({
     success: Boolean,
 });
 
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+const fs = require("fs");
+const { nextTick } = require('process');
+
+pathToAttachment = `${__dirname}/attachment.pdf`;
+attachment = fs.readFileSync(pathToAttachment).toString("base64");
+
 const PaymentDetails = mongoose.model('PatmentDetail', PaymentDetailsSchema);
 
 router.post('/orders', async (req, res) => {
@@ -77,6 +86,24 @@ router.post('/success', async (req, res) => {
         const raise = campaign.amountRaised + Number(amount);
         campaign.amountRaised = raise;
         await campaign.save();
+        const msg = {
+            to: email,
+            from: process.env.Email,
+            subject: 'Thank You for donation',
+            text: 'Thank you for donating through our website',
+            attachments: [
+              {
+                content: attachment,
+                filename: "attachment.pdf",
+                type: "application/pdf",
+                disposition: "attachment"
+              }
+            ]
+          };
+          sgMail.send(msg).catch(err => {
+            res.json(err)
+          });
+
         res.json({
             msg: 'success',
             orderId: razorpayOrderId,
@@ -87,4 +114,31 @@ router.post('/success', async (req, res) => {
     }
 });
 
+router.post('/send', async (req,res) =>{
+    try {
+        const msg = {
+            to: req.body.email,
+            from: process.env.Email,
+            subject: 'Thank You for donation',
+            text: 'Thank you for donating through our website',
+            attachments: [
+              {
+                content: attachment,
+                filename: "attachment.pdf",
+                type: "application/pdf",
+                disposition: "attachment"
+              }
+            ]
+          };
+          sgMail.send(msg).catch(err => {
+            res.json(err)
+          });
+          res.json({
+              success : true
+          })
+
+    } catch (error) {
+        nextTick(error);
+    }
+})
 module.exports = router;
