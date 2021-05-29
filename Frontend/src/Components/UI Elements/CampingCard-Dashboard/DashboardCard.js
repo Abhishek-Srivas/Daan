@@ -15,7 +15,7 @@ const data = {
 
 const CampaignCard = () => {
   return (
-      <div className="test">
+    
     <div className="DashBoardCard-Container">
       <div className="DashBoardCard-image"> 
         <img src={cardImg} width="100%" alt="card-img" />
@@ -62,7 +62,7 @@ const CampaignCard = () => {
         </ButtonOutline>
       </div>
     </div>
-    </div>
+ 
   );
 };
 
