@@ -6,6 +6,10 @@ const campaignController = require("../controller/campaignController");
 
 router
   .route("/create-campaign")
-  .post(authMiddleware.validateNgo,authController.login);
+  .post(authMiddleware.validateNgo,campaignController.createCampaign);
+
+router  
+  .route("/campaign")
+  .get(campaignController.getCampaigns);
 
 module.exports = router;

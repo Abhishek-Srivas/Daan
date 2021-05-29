@@ -26,12 +26,50 @@ exports.createCampaign = async (req, res, next) => {
                 ...req.body, ngo: req.ngo.id
             });
             res.json({
-                success : true,
-                data : "campaign created"
+                success: true,
+                data: "campaign created"
             })
         } catch (error) {
             console.log(error);
             throw new MyError(400, "Mongo Error");
+        }
+    } catch (error) {
+        next(error);
+    }
+};
+
+exports.getCampaigns = async (req, res, next) => {
+    try {
+        const page = req.query.page || 1;
+        const limit = req.query.limit * 1 || 50;
+
+        if (req.query.id) {
+            const ngo = await Ngo.findById(req.query.id)
+                .select("-password")
+                .skip(limit * (page - 1))
+                .limit(limit);;
+
+            if (!ngo) throw new MyError(404, "campaign not found");
+
+            res.json({
+                success: true,
+                data: ngo
+            });
+
+        }
+        else {
+            const ngo = await Ngo.find()
+                .select("-password")
+                .skip(limit * (page - 1))
+                .limit(limit);;
+
+
+            if (!ngo) throw new MyError(404, "No campaign found");
+
+            res.json({
+                success: true,
+                data: [...ngo]
+            });
         }
     } catch (error) {
         next(error);

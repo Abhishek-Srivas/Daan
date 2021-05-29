@@ -11,7 +11,7 @@ dotenv.config();
 
 //import routes
 const authRoutes = require("./routes/authRoutes");
-
+const campaignRoutes = require("./routes/campaignRoutes");
 
 //To remove CROS (cross-resource-origin-platform) problem
 app.use((req, res, next) =>{   
@@ -25,6 +25,7 @@ app.use((req, res, next) =>{
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(authRoutes);
+app.use(campaignRoutes);
 // OK route.
 app.get("/", (_req, res) => {
     res.send("OK");
