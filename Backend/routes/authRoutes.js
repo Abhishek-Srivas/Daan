@@ -16,6 +16,9 @@ router
 router
   .route("/login")
   .post(authController.login)
-  .get(authMiddleware.validateNgo,authController.isAuthCheck);
+  .get(authMiddleware.validateNgo,authController.isAuthCheck)
 
+router
+  .route("/edit-details")
+  .put(authMiddleware.validateNgo,authController.editDetails)
 module.exports = router;
