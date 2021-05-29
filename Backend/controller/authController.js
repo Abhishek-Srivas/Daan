@@ -40,7 +40,7 @@ const ngoLoginSchema = yup.object().shape({
 const editNgoDetails = yup.object({
     ngoName: yup.string(),
     email: yup.string().email(),
-    contact: yup.string(),
+    contact: yup.number(),
     password: yup.string()
 })
 
