@@ -19,14 +19,9 @@ const transporter = nodemailer.createTransport(nodemailersendgrid({
 const ngoSignupSchema = yup.object({
     ngoName: yup.string().required(),
     city: yup.string().required(),
-    name: yup.string().required(),
     email: yup.string().required().email(),
     contact: yup.string().required(),
     password: yup.string().required(),
-    confirmPassword: yup
-        .string()
-        .required()
-        .oneOf([yup.ref("password"), null], "Passwords must match"),
     otp: yup.string()
 });
 
@@ -44,6 +39,7 @@ const ngoLoginSchema = yup.object().shape({
 
 exports.signup = async (req, res, next) => {
     try {
+        console.log("here");
         const data = await ngoSignupSchema
             .validate({
                 ...req.body,
@@ -113,7 +109,7 @@ exports.otpVerification = async (req, res, next) => {
 
         const hashPassword = bcrypt.hashSync(data.password, 10);
         delete data.password;
-        delete data.confirmPassword;
+        
 
         try {
             const ngo = await Ngo.create({ ...data, password: hashPassword });
