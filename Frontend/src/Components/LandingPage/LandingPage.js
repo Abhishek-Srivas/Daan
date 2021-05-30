@@ -138,7 +138,6 @@ const LandingPage = () => {
             food,freshwater, health realted things, money etc. and those who
             want to volunteer their work adn service for the good of others.
           </p>
-          <ButtonFill>CTA Button</ButtonFill>
         </div>
         <div className="s4-card1">
           <img
