@@ -12,7 +12,7 @@ const DashboardCard = (props) => {
   return (
     <div className="DashBoardCard-Container">
       <div className="DashBoardCard-image">
-        <img src={props.photo || cardImg} width="100%" alt="card-img" />
+        <img src={cardImg} width="100%" alt="card-img" />
       </div>
 
       <div className="DashBoardCard-Content">

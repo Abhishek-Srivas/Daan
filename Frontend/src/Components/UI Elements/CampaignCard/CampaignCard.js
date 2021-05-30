@@ -22,7 +22,7 @@ const CampaignCard = (props) => {
   );
   return (
     <div className="cc">
-      <img src={props.photo || cardImg} width="100%" alt="card-img" />
+      <img src={cardImg} width="100%" alt="card-img" />
       <p className="cc-h1">{props.title}</p>
       <p className="cc-h2">{trimmedString}...</p>
       <div className="progressbar">

@@ -31,11 +31,7 @@ const CampaignPage = (props) => {
       <NavbarSolid />
       <div className="CP-container">
         <div className="CP-card">
-          <img
-            src={details ? details.photo : ""}
-            width="100%"
-            alt="Campaign Image"
-          />
+          <img src={cardImg} width="100%" alt="Campaign Image" />
           <p className="CP-h1">{details ? details.title : ""}</p>
           <p className="CP-h2">{details ? details.description : ""}</p>
           <p className="CP-h3">By - Daan NGO</p>
