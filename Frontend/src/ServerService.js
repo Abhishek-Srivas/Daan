@@ -50,7 +50,7 @@ class ServerService {
 
   createCampaign(data) {
     return trackPromise(
-      axios.post(BASE_URL + "http://localhost:8080/create-campaign", data, {
+      axios.post("http://localhost:8080/create-campaign", data, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

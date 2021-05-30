@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { ButtonFill } from "../../UI Elements/Buttons/Buttons";
 import "./NewCampaing.css";
 import ServerService from "../../../ServerService";
+import Alert from "../../UI Elements/Alerts/Alerts";
+
 const formValues = {
   image: "",
   heading: "",
@@ -10,8 +12,15 @@ const formValues = {
   amount: "",
 };
 
+const altData = {
+  message: "random",
+  type: false,
+};
+
 const NewCampaing = () => {
   const [campaingValues, setCampaingForm] = useState(formValues);
+  const [success, setSuccess] = useState(false);
+  const [alertdata, setAlertData] = useState(altData);
 
   const formHandler = (e) => {
     const { name, value } = e.target;
@@ -42,6 +51,13 @@ const NewCampaing = () => {
       fd.append(formElement, data[formElement]);
       console.log(formElement, data[formElement]);
     }
+
+    const alertData = {
+      message: "Campaign Created Successfully",
+      type: true,
+    };
+    setAlertData(alertData);
+    setSuccess(true);
 
     ServerService.createCampaign(fd)
       .then((res) => {
@@ -107,6 +123,7 @@ const NewCampaing = () => {
           </ButtonFill>
         </div>
       </form>
+      {success ? <Alert alertdata={alertdata} /> : ""}
     </div>
   );
 };
