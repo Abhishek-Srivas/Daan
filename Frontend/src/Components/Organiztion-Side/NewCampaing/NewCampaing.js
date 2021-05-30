@@ -28,9 +28,9 @@ const NewCampaing = () => {
       this.setState({
       image: e.target.files[0]
     })
-  }
-
+  }}
   const handleUpload = () =>{
+    // console.log(this.state.image);
     let file = campaingValues.image;
     var storage = firebase.storage();
     var storageRef = storage.ref();
@@ -55,6 +55,7 @@ const NewCampaing = () => {
      }
    ) 
   }
+  
 
   return (
     <div className="NewCampaing-Container">
