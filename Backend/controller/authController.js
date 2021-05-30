@@ -108,10 +108,11 @@ exports.otpVerification = async (req, res, next) => {
                 { email: data.email }
             ]
         });
-
+        if (otpExist.otp !== data.otp) throw new MyError(409, "Wrong Otp");
+        
         if (ngoExist) throw new MyError(409, "Continue to login ");
 
-        if (otpExist.otp !== data.otp) throw new MyError(409, "Wrong Otp");
+        
 
         const hashPassword = bcrypt.hashSync(data.password, 10);
         delete data.password;

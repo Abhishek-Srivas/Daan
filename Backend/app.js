@@ -24,6 +24,7 @@ app.use((req, res, next) => {
 //call middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static("uploads"));
 app.use(authRoutes);
 app.use(campaignRoutes);
 app.use('/payment', require('./routes/paymentRoute'));
