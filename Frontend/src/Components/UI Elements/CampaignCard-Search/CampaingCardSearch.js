@@ -20,7 +20,7 @@ const CampaignCard = (props) => {
   return (
     <div className="DashBoardCardSearch-Container">
       <div className="DashBoardCardSearch-image">
-        <img src={cardImg} width="100%" alt="card-img" />
+        <img src={props.photo || cardImg} width="100%" alt="card-img" />
         <div className="dcs-progressbar">
           <Progress
             status="default"
