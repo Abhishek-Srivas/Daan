@@ -107,10 +107,10 @@ const SignupModal = (props) => {
         })
         .catch((err) => {
           const alertData = {
-            message: err.response.data.Error || "Some Error Occured",
+            message: err.response.data.message || "Some Error Occured",
             type: false,
           };
-
+          console.log(err.response)
           setAlertData(alertData);
           setSuccess(true);
         });
@@ -149,10 +149,10 @@ const SignupModal = (props) => {
         })
         .catch((err) => {
           const alertData = {
-            message: err.response.data.Error || "Some Error Occured",
+            message: err.response.data.message || "Some Error Occured",
             type: false,
           };
-
+          console.log(err.response)
           setAlertData(alertData);
           setSuccess(true);
         });

@@ -7,7 +7,6 @@ const campaignSchema = yup.object({
     category: yup.string().required(),
     title: yup.string().required(),
     description: yup.string().required(),
-    photo: yup.string(),
     goal: yup.number().required()
 });
 
@@ -21,9 +20,11 @@ exports.createCampaign = async (req, res, next) => {
             .catch((err) => {
                 throw new MyError(400, err.errors?.[0]);
             });
+            const image = req.file;
+            const photoUrl = (image.path).split('\\')[1];
         try {
             await Campaign.create({
-                ...req.body, ngo: req.ngo.id
+                ...req.body, ngo: req.ngo.id, photo : photoUrl
             });
             res.json({
                 success: true,
