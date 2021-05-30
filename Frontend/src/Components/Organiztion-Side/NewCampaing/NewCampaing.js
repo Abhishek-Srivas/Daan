@@ -25,12 +25,13 @@ const NewCampaing = () => {
   
  const handleImageChange = (e) =>{
     if(e.target.files[0]){
-      this.setState({
-      image: e.target.files[0]
+      setCampaingForm({
+      ...campaingValues,image: e.target.files[0]
     })
   }}
-
-  const handleUpload = () =>{
+  const handleUpload = (e) =>{
+    // console.log(this.state.image);
+    e.preventDefault();
     let file = campaingValues.image;
     var storage = firebase.storage();
     var storageRef = storage.ref();
@@ -39,26 +40,25 @@ const NewCampaing = () => {
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot) =>{
         var progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
-        this.setState({progress})
+        console.log(progress)
       },(error) =>{
         throw error
       },() =>{
         // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
   
         uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
-          this.setState({
-            downloadURL: url
-          })
+         console.log(url)
         })
       document.getElementById("file").value = null
   
      }
    ) 
   }
+  
 
   return (
     <div className="NewCampaing-Container">
-      <form className="NewCampaingForm" onSubmit={formHandler}>
+      <form className="NewCampaingForm" onSubmit={handleUpload}>
         <input
           type="text"
           onChange={formHandler}

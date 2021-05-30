@@ -47,6 +47,17 @@ class ServerService {
       })
     );
   }
+
+
+  createCampaign(data) {
+    return trackPromise(
+      axios.post(BASE_URL + "/create-campaign", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+    );
+  }
 }
 
 export default new ServerService();
