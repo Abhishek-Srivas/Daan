@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ButtonFill } from "../../UI Elements/Buttons/Buttons";
 import "./NewCampaing.css";
+import firebase from "../../../firebase/firebase";
+
 const formValues = {
   image: "",
   heading: "",
@@ -20,6 +22,40 @@ const NewCampaing = () => {
       [name]: value,
     });
   };
+  
+ const handleImageChange = (e) =>{
+    if(e.target.files[0]){
+      this.setState({
+      image: e.target.files[0]
+    })
+  }}
+  const handleUpload = () =>{
+    // console.log(this.state.image);
+    let file = campaingValues.image;
+    var storage = firebase.storage();
+    var storageRef = storage.ref();
+    var uploadTask = storageRef.child('folder/' + file.name).put(file);
+  
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+      (snapshot) =>{
+        var progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
+        this.setState({progress})
+      },(error) =>{
+        throw error
+      },() =>{
+        // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
+  
+        uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
+          this.setState({
+            downloadURL: url
+          })
+        })
+      document.getElementById("file").value = null
+  
+     }
+   ) 
+  }
+  
 
   return (
     <div className="NewCampaing-Container">
@@ -43,7 +79,7 @@ const NewCampaing = () => {
 
         <select
           onChange={formHandler}
-          name="Tag"
+          name="tag"
           className="NewCampaingForm-Tag"
         >
           <option value="" disabled selected>
@@ -65,8 +101,9 @@ const NewCampaing = () => {
         <p className="uploadImg">Upload an Image for your Campaign</p>
         <input
           type="file"
-          name="my-image"
+          name="image"
           id="image"
+          onChange={handleImageChange}
           accept="image/jpeg, image/png, image/svg"
         />
         <div className="HospitalSignup-Button">
