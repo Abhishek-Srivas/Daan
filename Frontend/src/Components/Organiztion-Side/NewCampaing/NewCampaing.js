@@ -28,7 +28,7 @@ const NewCampaing = () => {
       this.setState({
       image: e.target.files[0]
     })
-  }
+  }}
 
   const handleUpload = () =>{
     let file = campaingValues.image;
