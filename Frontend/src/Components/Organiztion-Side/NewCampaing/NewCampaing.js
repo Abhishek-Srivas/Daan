@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { ButtonFill } from "../../UI Elements/Buttons/Buttons";
 import "./NewCampaing.css";
-import firebase from "../../../firebase/firebase";
-
+import ServerService from "../../../ServerService";
 const formValues = {
   image: "",
   heading: "",
@@ -22,43 +21,40 @@ const NewCampaing = () => {
       [name]: value,
     });
   };
-  
- const handleImageChange = (e) =>{
-    if(e.target.files[0]){
+
+  const handleImageChange = (e) => {
+    if (e.target.files[0]) {
       setCampaingForm({
-      ...campaingValues,image: e.target.files[0]
-    })
-  }}
-  const handleUpload = (e) =>{
-    // console.log(this.state.image);
+        ...campaingValues,
+        image: e.target.files[0],
+      });
+    }
+  };
+  const handleSubmit = (e) => {
     e.preventDefault();
-    let file = campaingValues.image;
-    var storage = firebase.storage();
-    var storageRef = storage.ref();
-    var uploadTask = storageRef.child('folder/' + file.name).put(file);
-  
-    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      (snapshot) =>{
-        var progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
-        console.log(progress)
-      },(error) =>{
-        throw error
-      },() =>{
-        // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
-  
-        uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
-         console.log(url)
-        })
-      document.getElementById("file").value = null
-  
-     }
-   ) 
-  }
-  
+    const data = {
+      ...campaingValues,
+    };
+
+    const fd = new FormData();
+
+    for (let formElement in data) {
+      fd.append(formElement, data[formElement]);
+      console.log(formElement, data[formElement]);
+    }
+
+    ServerService.createCampaign(fd)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="NewCampaing-Container">
-      <form className="NewCampaingForm" onSubmit={handleUpload}>
+      <form className="NewCampaingForm" onSubmit={handleSubmit}>
         <input
           type="text"
           onChange={formHandler}
@@ -88,7 +84,7 @@ const NewCampaing = () => {
           <option value="Education">Education</option>
           <option value="Clothes">Clothes</option>
           <option value="Blood">Blood</option>
-          <option value="Beds not available">Food/Water</option>
+          <option value="Food">Food/Water</option>
         </select>
         <input
           type="number"

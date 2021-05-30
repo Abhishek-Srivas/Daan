@@ -157,6 +157,7 @@
   background: #ffffff;
   box-shadow: 0px 4px 16px #ffdecc;
   border-radius: 1.8rem;
+  overflow: hidden;
 }
 
 .s4-card2 {
@@ -168,6 +169,7 @@
   background: #ffffff;
   box-shadow: 0px 4px 16px #ffdecc;
   border-radius: 1.8rem;
+  overflow: hidden;
 }
 
 .s4-card3 {
@@ -179,6 +181,7 @@
   background: #ffffff;
   box-shadow: 0px 4px 16px #ffdecc;
   border-radius: 29px;
+  overflow: hidden;
 }
 /* section5 */
 
@@ -213,4 +216,56 @@
 
 .kFlRbN {
   margin: 0% 6.5vw;
+}
+
+.Footer {
+  width: 100vw;
+  overflow-x: hidden;
+  background: #131e2d;
+  color: #fff;
+}
+
+.Footer-Top {
+  padding: 2rem 8rem;
+  width: 70vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Footer-Top p {
+  width: 70%;
+}
+
+.Footer-h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  width: max-content !important;
+}
+
+.Footer-h2 {
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+}
+
+.social-icons {
+  display: flex;
+}
+.social-icons svg {
+  font-size: 1.7rem;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+}
+
+.Footer-Bottom {
+  width: 100%;
+  text-align: center;
+  padding: 0.8rem 0rem;
+}
+
+hr {
+  width: 100vw;
+  background: #e6eaee;
+  height: 1px;
+  border: none !important;
 }

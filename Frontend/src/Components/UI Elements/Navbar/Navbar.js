@@ -46,18 +46,6 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navlinks">
-          <Link
-            to="#about"
-            className={scrolling ? "navlink-solid" : "navlink-outline"}
-          >
-            About
-          </Link>
-          <Link
-            to="#contact"
-            className={scrolling ? "navlink-solid" : "navlink-outline"}
-          >
-            Contact
-          </Link>
           <ButtonOutline
             borderWidth="1px"
             fontSize="1rem"

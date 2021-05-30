@@ -1,7 +1,7 @@
 import axios from "axios";
 import { trackPromise } from "react-promise-tracker";
 // export const BASE_URL = "http://localhost:8080";
-export const BASE_URL = "https://daan-app.herokuapp.com/";
+export const BASE_URL = "https://daan-app.herokuapp.com";
 
 class ServerService {
   ngoSignup(data) {
@@ -48,10 +48,9 @@ class ServerService {
     );
   }
 
-
   createCampaign(data) {
     return trackPromise(
-      axios.post(BASE_URL + "/create-campaign", {
+      axios.post(BASE_URL + "http://localhost:8080/create-campaign", data, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

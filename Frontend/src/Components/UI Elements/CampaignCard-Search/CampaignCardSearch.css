@@ -1,7 +1,7 @@
 .DashBoardCardSearch-Container {
   display: flex;
-  width: 47.86vw;
-  height: 42.36vh;
+  max-width: 70vw;
+  height: auto;
   background: #ffffff;
   border: 1px solid #f2f2f2;
   box-sizing: border-box;
@@ -48,8 +48,8 @@
   margin-top: 0.5rem;
 }
 
-.dcs-button-wrapper{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.dcs-button-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

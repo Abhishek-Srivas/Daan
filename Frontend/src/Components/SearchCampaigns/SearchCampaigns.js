@@ -48,7 +48,7 @@ const SearchCampaigns = () => {
   if (results)
     numberOfCampaigns = (
       <p className="search-results">
-        {campaigns.length} Hospital(s) found with this name in given location
+        {campaigns.length} Campaign(s) found in the given location
       </p>
     );
   else numberOfCampaigns = <p></p>;

@@ -10,6 +10,7 @@
   padding: 1rem;
   /* padding-bottom: 0.5rem; */
   margin-top: 1.5rem;
+  position: relative;
 }
 .DashBoardCard-image {
   height: 100%;
@@ -40,6 +41,9 @@
 }
 
 .deleteIcon {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
   color: #8c8c8c;
   cursor: pointer;
 }
