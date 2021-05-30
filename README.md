@@ -35,6 +35,10 @@ The backend was developed in node.js and express.js. Using some middlewares like
 \*Trust our idea
 
 # Screenshots of the project:
+![photo_2021-05-30_09-42-03](https://user-images.githubusercontent.com/59766593/120091719-707e1e00-c12b-11eb-8fa4-3cbda92214e3.jpg)
+![photo_2021-05-30_09-42-24](https://user-images.githubusercontent.com/59766593/120091718-6eb45a80-c12b-11eb-822d-d3b76d8d15a0.jpg)
+![photo_2021-05-30_09-42-13](https://user-images.githubusercontent.com/59766593/120091720-7116b480-c12b-11eb-90aa-dd453ac1dcf4.jpg)
+![photo_2021-05-30_09-42-18](https://user-images.githubusercontent.com/59766593/120091721-71af4b00-c12b-11eb-8db2-e600ac416ecb.jpg)
 
 # Installation
 
