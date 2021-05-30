@@ -71,6 +71,9 @@ const Volunteerform = () => {
   
   return (<div>
       <div>
+          <p>Volunteer Form</p>
+          <p>Fill out the form to become a Volunteer in following organiz</p>
+      </div>
 <form className="HospitalSignupForm" onSubmit={volunteerFormHandler}>
               <input
                 value={volunteerData.name}
@@ -130,7 +133,7 @@ const Volunteerform = () => {
                 </ButtonFill>
               </div>
             </form>{" "}
-            </div>
+            
   </div>);
 };
 

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { trackPromise } from "react-promise-tracker";
 // export const BASE_URL = "http://localhost:8080";
-export const BASE_URL = "http://bee5d06c52b6.ngrok.io";
+export const BASE_URL = "https://daan-app.herokuapp.com";
 
 class ServerService {
   ngoSignup(data) {
@@ -22,6 +22,10 @@ class ServerService {
 
   campaignDetails(id) {
     return trackPromise(axios.get(BASE_URL + "/campaign?id=" + id));
+  }
+
+  searchCampaign(city) {
+    return trackPromise(axios.get(BASE_URL + "/campaign?city=" + city));
   }
 
   yourCampaigns(id) {
